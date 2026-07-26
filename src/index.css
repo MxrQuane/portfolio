@@ -23,10 +23,19 @@
 
     --color-accent: #00ff7b;
     --color-accent-foreground: #001203;
+
+    --spacing-timeline: 17rem;
+    --spacing-timeline-gap: 11rem;
 }
 
 body {
     background-color: var(--color-background);
     color: var(--color-secondary-foreground);
     font-family: var(--font-primary);
+}
+
+/* First section's line starts from the dot, not the top */
+section:first-child > .timeline-line {
+    top: auto;
+    height: calc(100% - var(--spacing-timeline-gap));
 }

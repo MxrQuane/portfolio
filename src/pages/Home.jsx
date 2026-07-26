@@ -1,8 +1,13 @@
+import Header from "../components/home/Header";
+import Hero from "../components/home/sections/Hero";
 
 const Home = () => {
     return (
         <div>
-            <h1 className="text-4xl font-logo text-primary-foreground" >MARO</h1>
+            <Header />
+            <div>
+                <Hero />
+            </div>
         </div>
     );
 };
