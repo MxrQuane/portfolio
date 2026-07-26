@@ -18,8 +18,11 @@
     --color-primary: #40BEEF;
     --color-primary-foreground: #E7E7E7;
 
-    --color-background: #101010;
+    --color-background: #0E0D19;
     --color-secondary-foreground: #D7D7D7;
+
+    --color-muted: #211f33;
+    --color-secondary-muted: #4e4b6b;
 
     --color-accent: #00ff7b;
     --color-accent-foreground: #001203;

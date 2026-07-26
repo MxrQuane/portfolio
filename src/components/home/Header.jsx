@@ -1,6 +1,6 @@
 
 const Header = () => {
-    const navLinks = ["home", "about", "skills", "projects", "contact"];
+    const navLinks = ["home", "services", "work", "about", "contact"];
     return (
         <div className="fixed top-0 left-0 right-0 flex items-center justify-start gap-12 p-4 z-100" >
             <div className="flex items-center gap-2 text-4xl" >

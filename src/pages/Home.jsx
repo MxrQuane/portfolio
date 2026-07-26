@@ -1,5 +1,6 @@
 import Header from "../components/home/Header";
 import Hero from "../components/home/sections/Hero";
+import Services from "../components/home/sections/Services";
 
 const Home = () => {
     return (
@@ -7,6 +8,7 @@ const Home = () => {
             <Header />
             <div>
                 <Hero />
+                <Services />
             </div>
         </div>
     );
