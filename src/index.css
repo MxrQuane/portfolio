@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Quantico";
+  src: url("./assets/fonts/Quantico-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Mohave";
+  src: url("./assets/fonts/Mohave-VariableFont_wght.ttf") format("truetype");
+}
+
+@theme {
+    --font-logo: "Quantico";
+    --font-primary: "Mohave";
+
+    --color-primary: #40BEEF;
+    --color-primary-foreground: #E7E7E7;
+
+    --color-background: #101010;
+    --color-secondary-foreground: #D7D7D7;
+
+    --color-accent: #00ff7b;
+    --color-accent-foreground: #001203;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-secondary-foreground);
+    font-family: var(--font-primary);
+}
