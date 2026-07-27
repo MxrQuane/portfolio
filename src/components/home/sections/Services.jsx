@@ -1,30 +1,11 @@
 import Section from '../utils/Section';
+import SectionTitle from '../utils/SectionTitle';
+import { services } from '../../../data/services'
 
 const Services = () => {
-    const services = [
-        {
-            title: "Cystom Desktop Applications",
-            description: "Cross-platform apps with Electron + React — local data, native feel, offline-first when needed."
-        },
-        {
-            title: "Full-Stack Web Apps",
-            description: "End-to-end React + Node apps, from data model to deployed product."
-        },
-        {
-            title: "Backend & API Development",
-            description: "Node.js/Express APIs, database design, auth flows, third-party integrations (OAuth, external APIs, etc.)"
-        },
-        {
-            title: "AI/ML Integration & Prototyping",
-            description: "Adding predictive models, automation, or TensorFlow-based features into existing products, not building research models, but making ML usable in a real app."
-        }
-    ]
     return (
         <Section id="services">
-            <div className="absolute top-16 right-8 uppercase" >
-                <h1 className="text-9xl font-semibold text-muted" >Services</h1>
-                <h2 className="text-4xl font-semibold text-end text-secondary-muted" >what I offer</h2>
-            </div>
+            <SectionTitle title="services" subTitle="what I offer" textAlign="text-end" x="top-16" y="right-8" />
             <div className="flex flex-col gap-8">
                 {services.map((service,index) => {
                     return (

@@ -1,14 +1,12 @@
 import Section from "../../utils/Section";
 import ProjectCard from "./ProjectCard";
 import { projects } from "../../../../data/projects";
+import SectionTitle from "../../utils/SectionTitle";
 
 export const Work = () => {
     return (
         <Section id="work" className="h-400!" >
-            <div className="absolute top-16 left-14 uppercase" >
-                <h1 className="text-9xl font-semibold text-muted" >Work</h1>
-                <h2 className="text-4xl font-semibold text-center text-secondary-muted" >things I've built</h2>
-            </div>
+            <SectionTitle title="work" subTitle="things I've built" x="top-16" y="left-14" />
             {
                 projects.map((project, index) => (
                     <ProjectCard 
