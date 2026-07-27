@@ -16,6 +16,8 @@
     --font-primary: "Mohave";
 
     --color-primary: #40BEEF;
+    --color-primary-500: #1590bf;
+    --color-primary-900: #161427;
     --color-primary-foreground: #E7E7E7;
 
     --color-background: #0E0D19;
@@ -35,7 +37,7 @@
 }
 
 body {
-    background-color: var(--color-background);
+    background: linear-gradient(45deg, var(--color-background) 10%, var(--color-primary-900) 30%, var(--color-background) 50%, var(--color-primary-900) 70%, var(--color-background) 90%);
     color: var(--color-secondary-foreground);
     font-family: var(--font-primary);
 }

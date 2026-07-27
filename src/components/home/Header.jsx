@@ -2,7 +2,7 @@
 const Header = () => {
     const navLinks = ["home", "services", "work", "about", "contact"];
     return (
-        <div className="fixed top-0 left-0 right-0 flex items-center justify-start gap-12 p-4 z-100" >
+        <div className="fixed inset-x-0 top-0 bg-black flex items-center justify-start gap-12 p-4 z-100" >
             <div className="flex items-center gap-2 text-4xl" >
                 <span className="font-primary text-primary">&lt;</span>
                 <a className="font-logo text-primary-foreground" href="#home">MARO</a>

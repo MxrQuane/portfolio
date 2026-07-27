@@ -8,8 +8,9 @@ export const Work = () => {
         <Section id="work" className="h-400!" >
             <SectionTitle title="work" subTitle="things I've built" x="top-16" y="left-14" />
             {
-                projects.map((project, index) => (
+                projects.map((project, i) => (
                     <ProjectCard 
+                        key={i}
                         title={project.title}
                         description={project.description}
                         image={project.image}
