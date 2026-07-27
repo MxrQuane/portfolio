@@ -29,6 +29,8 @@
 
     --spacing-timeline: 17rem;
     --spacing-timeline-gap: 11rem;
+
+    --shadow-3xl: 0 0px 0px 4px rgba(0, 0, 0, 0.6);
 }
 
 body {
