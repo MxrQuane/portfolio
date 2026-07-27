@@ -36,9 +36,16 @@ const ProjectCard = ({ title, description, image, x, y, display="L" }) => {
             className={`absolute ${x} ${y} z-60 perspective-[1000px]`}
         >
             <div ref={frame} className="relative transform-3d transition-transform duration-500 ease-out">
-                <div className={`relative w-100 h-56 bg-white after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(25deg,rgba(0,0,0,.7)_0%,transparent_50%)] ${display === "P" && "w-full! h-110!"}`} >
-                    {display === "L" && <img src={image} className="w-full h-full" />}
-                    {display === "P" && <img src={image} className="h-full" />}
+                <div
+                    className={`relative w-100 h-56 bg-white after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(35deg,rgba(0,0,0,1),transparent_80%)] ${display === "P" && "w-62! h-110!"}`}
+                    style={{
+                        backgroundImage: `url(${image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
+                >
+                    {/* {display === "L" && <img src={image} className="w-full h-full" />} */}
+                    {/* {display === "P" && <img src={image} className="h-full" />} */}
                 </div>
                 <div className="absolute translate-z-6 flex flex-col gap-2 -left-10 bottom-6">
                     <h1 className="text-4xl font-semibold text-primary-foreground underline underline-offset-12">{title}</h1>

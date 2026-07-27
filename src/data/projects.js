@@ -1,8 +1,8 @@
-import zirox from "../assets/images/projects/zirox/_0.webp";
-import herdVision from "../assets/images/projects/herdvision/_0.webp";
-import autoLed from "../assets/images/projects/autoled/_0.webp";
-import fireGuard from "../assets/images/projects/fireguard/_0.webp";
-import stockify from "../assets/images/projects/stockify/_0.webp";
+import zirox from "../assets/images/projects/zirox/thumbnail.webp";
+import herdVision from "../assets/images/projects/herdvision/thumbnail.webp";
+import autoLed from "../assets/images/projects/autoled/thumbnail.webp";
+import fireGuard from "../assets/images/projects/fireguard/thumbnail.webp";
+import stockify from "../assets/images/projects/stockify/thumbnail.webp";
 
 export const projects = [
   {
