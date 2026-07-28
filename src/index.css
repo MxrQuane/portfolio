@@ -36,16 +36,21 @@
     --tracking-tighter: -.2rem;
 }
 
+html, body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
-    background: linear-gradient(45deg, var(--color-background) 10%, var(--color-primary-900) 30%, var(--color-background) 50%, var(--color-primary-900) 70%, var(--color-background) 90%);
-    color: var(--color-secondary-foreground);
-    font-family: var(--font-primary);
+  background: linear-gradient(45deg, var(--color-background) 10%, var(--color-primary-900) 30%, var(--color-background) 50%, var(--color-primary-900) 70%, var(--color-background) 90%);
+  color: var(--color-secondary-foreground);
+  font-family: var(--font-primary);
 }
 
 /* First section's line starts from the dot, not the top */
 section:first-child > .timeline-line {
-    top: auto;
-    height: calc(100% - var(--spacing-timeline-gap));
+  top: auto;
+  height: calc(100% - var(--spacing-timeline-gap));
 }
 
 /*
