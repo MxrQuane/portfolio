@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useIsTouchDevice } from "../../../../hooks/IsTouch"
 
 // display = L: Landscape
 // display = P: Portrait
@@ -8,9 +9,11 @@ const ProjectCard = ({ title, description, image, x, y, display="L" }) => {
     const frame = useRef();
     const ROTATION_INTENSITY = 30;
     const SCALE = 1.1;
+    const isTouch = useIsTouchDevice();
+
 
     const handleMouseMove = (e) => {
-        if (card.current && frame.current) {
+        if (!isTouch && card.current && frame.current) {
             const rect = card.current.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -23,7 +26,7 @@ const ProjectCard = ({ title, description, image, x, y, display="L" }) => {
     };
 
     const handleMouseLeave = () => {
-        if (frame.current) {
+        if (!isTouch && frame.current) {
             frame.current.style.transform = 'rotate(0deg) scale(1)';
         }
     };
