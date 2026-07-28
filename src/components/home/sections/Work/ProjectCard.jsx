@@ -33,21 +33,19 @@ const ProjectCard = ({ title, description, image, x, y, display="L" }) => {
             ref={card} 
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className={`absolute ${x} ${y} z-60 perspective-[1000px]`}
+            className={`md:absolute w-full md:w-fit ${x} ${y} perspective-[1000px]`}
         >
-            <div ref={frame} className="relative transform-3d transition-transform duration-500 ease-out">
+            <div ref={frame} className="relative w-full transform-3d transition-transform duration-500 ease-out">
                 <div
-                    className={`relative w-100 h-56 bg-white after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(35deg,rgba(0,0,0,1),transparent_80%)] ${display === "P" && "w-62! h-110!"}`}
+                    className={`relative w-full h-56 sm:h-100 md:w-80 md:h-48 lg:w-100 lg:h-56 bg-white after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(35deg,rgba(0,0,0,1),transparent_80%)] ${display === "P" && "w-62! h-110!"}`}
                     style={{
                         backgroundImage: `url(${image})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                     }}
                 >
-                    {/* {display === "L" && <img src={image} className="w-full h-full" />} */}
-                    {/* {display === "P" && <img src={image} className="h-full" />} */}
                 </div>
-                <div className="absolute translate-z-6 flex flex-col gap-2 -left-10 bottom-6">
+                <div className="absolute translate-z-6 flex flex-col gap-2 -left-2 xl:-left-10 bottom-6">
                     <h1 className="text-4xl font-semibold text-primary-foreground underline underline-offset-12">{title}</h1>
                     <p className="text-xl text-secondary-foreground" >{description}</p>
                 </div>

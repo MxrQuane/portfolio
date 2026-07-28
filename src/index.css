@@ -29,8 +29,8 @@
     --color-accent: #00ff7b;
     --color-accent-foreground: #001203;
 
-    --spacing-timeline: 17rem;
-    --spacing-timeline-gap: 11rem;
+    --spacing-timeline: 4rem;
+    --spacing-timeline-gap: 8rem;
 
     --shadow-3xl: 0 0px 0px 4px rgba(0, 0, 0, 0.6);
     --tracking-tighter: -.2rem;
@@ -47,3 +47,30 @@ section:first-child > .timeline-line {
     top: auto;
     height: calc(100% - var(--spacing-timeline-gap));
 }
+
+/*
+sm: 40rem
+md: 48rem
+lg: 64rem
+xl: 80rem 
+ */
+@media (min-width: 40rem) {
+  :root {
+    --spacing-timeline: 8rem;
+    --spacing-timeline-gap: 10rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --spacing-timeline: 13rem;
+    --spacing-timeline-gap: 11rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --spacing-timeline: 17rem;
+    --spacing-timeline-gap: 11rem;
+  }
+} 

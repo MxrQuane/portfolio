@@ -10,7 +10,7 @@ const About = () => {
     return (
         <Section id="about">
             <SectionTitle title="about" subTitle="why trust me?" x="-top-20" y="left-1/2 -translate-x-1/2" />
-            <p className="text-secondary-foreground text-2xl max-w-4xl" >
+            <p className="text-secondary-foreground md:text-xl lg:text-2xl max-w-4xl" >
                 I'm <S>Marouane Haine</S>, an engineer who turns <S>messy real-world problems into software that actually works</S>. My projects span AI-powered prediction systems, capable business tools, tools shaped by the problems people actually have.
                 <br />
                 <br />
