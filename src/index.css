@@ -156,3 +156,68 @@ xl: 80rem
     transform: scale(1);
   }
 }
+
+/* Services Section Scroll Reveal Animation */
+.service-item::before {
+  transform: skewX(12deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.service-item::after {
+  transform: skewX(12deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.service-item .service-text-curtain {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: clip-path;
+}
+
+.service-item.animate-in::before {
+  transform: skewX(12deg) scaleX(1);
+}
+
+.service-item.animate-in::after {
+  transform: skewX(12deg) scaleX(1);
+  transition-delay: 0.4s;
+}
+
+.service-item.animate-in .service-text-curtain {
+  clip-path: inset(0 0% 0 0);
+  transition-delay: 0.5s;
+}
+
+.project-card {
+  transform: translateX(-20%);
+  opacity: 0;
+}
+
+.project-card.animate-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.project-card .card-image::after {
+  transition: transform 0.5s ease;
+}
+
+.project-card.animate-in .card-image::after {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition-delay: 0.3s;
+}
+
+.project-card .card-text::after {
+  transition: transform 0.5s ease;
+}
+
+.project-card.animate-in .card-text::after {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition-delay: 0.1s;
+}
