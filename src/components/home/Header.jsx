@@ -1,8 +1,31 @@
+import { useState, useEffect } from "react";
 import { useHideOnScroll } from "../../hooks/Scroll";
 
 const Header = () => {
     const NAV_LINKS = ["home", "services", "work", "about", "contact"];
     const hidden = useHideOnScroll(100);
+
+    const [typeIndex, setTypeIndex] = useState(0);
+    const [showNav, setShowNav] = useState(false);
+    const TYPING_SPEED = 100;
+    const NAV_DISPLAY_DELAY = 400;
+
+    useEffect(() => {
+        const totalSteps = 7;
+        let step = 0;
+        const interval = setInterval(() => {
+            step++;
+            setTypeIndex(step);
+            if (step >= totalSteps) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    setShowNav(true);
+                }, NAV_DISPLAY_DELAY);
+            }
+        }, TYPING_SPEED);
+
+        return () => clearInterval(interval);
+    }, []);
 
     function smoothScrollTo(targetPosition, duration = 600) {
         const startPosition = window.scrollY || window.pageYOffset;
@@ -39,41 +62,51 @@ const Header = () => {
         smoothScrollTo(targetPosition, 600);
     }
 
+    const logoText = "MARO".slice(0, Math.max(0, typeIndex - 1));
+
     return (
-        <div className={`fixed inset-x-0 top-0 bg-linear-to-b from-black via-black to-transparent flex items-center justify-start gap-6 sm:gap-12 p-4 z-100 transition-transform duration-300 ${hidden ? "-translate-y-full hover:translate-y-0" : ""}`} >
-            <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl xl:text-4xl" >
-                <span className="font-primary text-primary">&lt;</span>
-                <a 
-                    className="font-logo text-primary-foreground" 
-                    href="#home"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick("home");
-                    }}
-                >
-                    MARO
-                </a>
+        <div className={`fixed inset-x-0 top-0 bg-linear-to-b from-black via-black to-transparent flex items-center justify-start gap-4 p-4 z-100 transition-transform duration-300 ${hidden ? "-translate-y-full hover:translate-y-0" : ""}`} >
+            <div className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl xl:text-4xl min-h-[2.5rem]" >
+                {typeIndex >= 1 && <span className="font-primary text-primary">&lt;</span>}
+                {typeIndex >= 2 && (
+                    <a 
+                        className="font-logo text-primary-foreground" 
+                        href="#home"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleNavClick("home");
+                        }}
+                    >
+                        {logoText}
+                    </a>
+                )}
             </div>
-            <div className="flex items-center gap-4 sm:gap-6" >
-                {NAV_LINKS.map((navLink, i) => {
-                    return (
-                        <a
-                            key={i}
-                            className="text-xs sm:text-s md:text-m xl:text-lg hover:text-primary-foreground active:text-primary capitalize transition-colors duration-200"
-                            href={`#${navLink}`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick(navLink);
-                            }}
-                        >
-                            {navLink}
-                        </a>
-                    )
-                })}
-                <div className="relative flex items-center gap-1">
-                    <span className="font-primary text-primary transform translate-y-px">/</span>
-                    <span className="font-primary text-primary">&gt;</span>
+
+            {showNav && (
+                <div className="animate-nav-expand overflow-hidden flex items-center">
+                    <div className="flex items-center gap-4 sm:gap-6 px-4 sm:px-6 whitespace-nowrap">
+                        {NAV_LINKS.map((navLink, i) => {
+                            return (
+                                <a
+                                    key={i}
+                                    className="text-xs sm:text-s md:text-m xl:text-lg hover:text-primary-foreground active:text-primary capitalize transition-colors duration-200"
+                                    href={`#${navLink}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleNavClick(navLink);
+                                    }}
+                                >
+                                    {navLink}
+                                </a>
+                            )
+                        })}
+                    </div>
                 </div>
+            )}
+
+            <div className="relative flex items-center gap-1 text-xs sm:text-s md:text-m xl:text-lg">
+                {typeIndex >= 6 && <span className="font-primary text-primary transform translate-y-px">/</span>}
+                {typeIndex >= 7 && <span className="font-primary text-primary">&gt;</span>}
             </div>
         </div>
     );

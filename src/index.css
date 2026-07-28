@@ -49,8 +49,20 @@ body {
 
 /* First section's line starts from the dot, not the top */
 section:first-child > .timeline-line {
-  top: auto;
-  height: calc(100% - var(--spacing-timeline-gap));
+  top: var(--spacing-timeline-gap);
+  bottom: 0;
+  height: auto;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  will-change: transform;
+  animation: timelineAppear 2.2s ease forwards;
+}
+
+section:first-child > .timeline-dot {
+  animation: dotAppear 0.2s ease forwards;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  transform: scale(0);
 }
 
 /*
@@ -78,4 +90,69 @@ xl: 80rem
     --spacing-timeline: 17rem;
     --spacing-timeline-gap: 11rem;
   }
+}
+
+@keyframes navExpand {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 60rem;
+  }
+}
+
+.animate-nav-expand {
+  animation: navExpand 5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroEmergeFromTimeline {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-hero-emerge {
+  animation-name: heroEmergeFromTimeline;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+@keyframes colorToPrimary {
+  from {
+    color: var(--color-primary-foreground);
+  }
+  to {
+    color: var(--color-primary);
+  }
+}
+
+.animate-color-primary {
+  color: var(--color-primary-foreground);
+  animation: colorToPrimary 0.6s ease forwards;
 } 
+
+@keyframes timelineAppear {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes dotAppear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
