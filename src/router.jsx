@@ -1,12 +1,28 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
+import ProjectPage from "./pages/ProjectPage";
+import { TransitionProvider } from "./components/TransitionContext";
 
 const router = createBrowserRouter(
     [
         {
             path: "/",
-            element: <Home />
-        }
+            element: (
+                <TransitionProvider>
+                    <Outlet />
+                </TransitionProvider>
+            ),
+            children: [
+                {
+                    path: "",
+                    element: <Home />
+                },
+                {
+                    path: "projects/:id",
+                    element: <ProjectPage />
+                }
+            ]
+        },
     ],
     {
         basename: "/portfolio/",

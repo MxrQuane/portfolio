@@ -13,8 +13,8 @@ export const Work = () => {
                         <ProjectCard 
                             key={i}
                             title={project.title}
-                            description={project.description}
-                            image={project.image}
+                            subTitle={project.subTitle}
+                            thumbnail={project.thumbnail}
                             x={project.x}
                             y={project.y}
                             display={project?.display}

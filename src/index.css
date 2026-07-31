@@ -29,6 +29,8 @@
     --color-accent: #00ff7b;
     --color-accent-foreground: #001203;
 
+    --color-link: #AD29FF;
+
     --spacing-timeline: 4rem;
     --spacing-timeline-gap: 8rem;
 
@@ -45,6 +47,7 @@ body {
   background: linear-gradient(45deg, var(--color-background) 10%, var(--color-primary-900) 30%, var(--color-background) 50%, var(--color-primary-900) 70%, var(--color-background) 90%);
   color: var(--color-secondary-foreground);
   font-family: var(--font-primary);
+  min-height: 100vh;
 }
 
 /* First section's line starts from the dot, not the top */
@@ -220,4 +223,62 @@ xl: 80rem
   transform: scaleX(0);
   transform-origin: right;
   transition-delay: 0.1s;
+}
+
+.project-card.animate-out .card-image::after {
+  transform: scaleX(1);
+  transform-origin: right;
+  transition-delay: 0.1s;
+}
+
+.project-card.animate-out .card-text::after {
+  transform: scaleX(1);
+  transform-origin: right;
+  transition-delay: 0.3s;
+}
+
+@keyframes revealProjectInfo{
+  from {
+    transform: scaleX(0);
+    
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.info-container {
+  transform-origin: right;
+  isolation: isolate;
+}
+
+.info-container > * {
+  animation: fadeInText 0.4s ease both;
+  animation-delay: 0.6s;
+}
+
+.info-container.animate-out > * {
+  animation: fadeOutText 0.4s ease both;
+}
+
+@keyframes fadeOutText {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
