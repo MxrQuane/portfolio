@@ -1,10 +1,9 @@
-import Section from '../utils/Section';
-import SectionTitle from '../utils/SectionTitle';
-import { socials } from '../../../data/socials';
+import Section from '../../utils/Section';
+import SectionTitle from '../../utils/SectionTitle';
+import { socials } from '../../../../data/socials';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import GetInTouchButton from '../utils/GetInTouchButton';
-
-const Contact = () => {
+import GetInTouch from './GetInTouch';
+export const Contact = () => {
     return (
         <Section id="contact">
             <SectionTitle title="contact" subTitle="have a project in mind?" textAlign="text-end" x="bottom-16" y="right-8" />
@@ -17,9 +16,7 @@ const Contact = () => {
                     </a>
                 ))}
             </div>
-            <GetInTouchButton className="mt-10 md:mt-20" />
+            <GetInTouch />
         </Section>
     );
 };
-
-export default Contact;

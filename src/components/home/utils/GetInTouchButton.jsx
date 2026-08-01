@@ -1,11 +1,11 @@
 import PrimaryButton from "./PrimaryButton";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-const GetInTouchButton = ({ className }) => {
+const GetInTouchButton = ({ className, onClick }) => {
     return (
         <PrimaryButton
             className={className}
-            onClick={() => console.log("get in touch")} 
+            onClick={onClick} 
             icon={faPaperPlane}
         >
             get in touch

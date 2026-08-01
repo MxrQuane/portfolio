@@ -215,16 +215,6 @@ section:first-child > .timeline-dot {
   transition-delay: 0.3s;
 }
 
-@keyframes revealProjectInfo{
-  from {
-    transform: scaleX(0);
-    
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
 .info-container {
   transform-origin: right;
   isolation: isolate;
@@ -258,6 +248,78 @@ section:first-child > .timeline-dot {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes gitIntro {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes gitOutro {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+.git-container > * {
+  transition: transform 0.4s ease-in-out;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: gitIntro 0.4s ease-in-out forwards;
+}
+
+.git-container > *:not(:first-child) {
+  transform-origin: bottom;
+}
+
+.git-container.animate-out > * {
+  animation: gitOutro 0.4s ease-in-out forwards;
+}
+
+.step-content .action-buttons > * {
+  transition: all 0.2s ease-in-out;
+}
+
+.step-content .action-buttons > .next-button:hover {
+  transform: scale(1.1);
+}
+
+.step-content .action-buttons > .back-button:hover {
+  transform: scale(1.1);
+}
+.step-content .action-buttons > *.enabled-animation::before  {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%; 
+   background: var(--color-primary-500);
+   opacity: 0.3;
+   transform: translate(-10%, -30%) scale(0);
+   transform-origin: center;
+   z-index: -1;
+  }
+
+.step-content .action-buttons > *.enabled-animation::before {
+  animation: buttonIn 0.3s ease-in-out;
+}
+
+@keyframes buttonIn {
+  from {
+    transform: translate(-10%, -30%) scale(0);
+  }
+  to {
+    transform: translate(-10%, -30%) scale(1) ;
   }
 }
 

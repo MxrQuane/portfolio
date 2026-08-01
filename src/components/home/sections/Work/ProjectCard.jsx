@@ -66,7 +66,6 @@ const ProjectCard = ({ title, subTitle, thumbnail, x, y, display="L" }) => {
         setClickAnimation(true);
         // Delay navigation until card animate-out finishes, then start screen sweep
         setTimeout(() => {
-            setClickAnimation(false);
             startTransition(() => {
                 navigate(`/projects/${projectId}`);
             });
