@@ -22,6 +22,7 @@
 
     --color-primary: #40BEEF;
     --color-primary-500: #1590bf;
+    --color-primary-700: #145984;
     --color-primary-900: #161427;
     --color-primary-foreground: #E7E7E7;
 
@@ -269,19 +270,30 @@ section:first-child > .timeline-dot {
   }
 }
 
-.git-container > * {
-  transition: transform 0.4s ease-in-out;
-  transform: scaleY(0);
+.git-container .git-background {
   transform-origin: top;
   animation: gitIntro 0.4s ease-in-out forwards;
 }
 
-.git-container > *:not(:first-child) {
-  transform-origin: bottom;
+.git-container .git-foreground {
+  animation: gitForegroundIn 0.4s ease-in-out forwards;
 }
 
-.git-container.animate-out > * {
+.git-container.animate-out .git-background {
   animation: gitOutro 0.4s ease-in-out forwards;
+}
+
+.git-container.animate-out .git-foreground {
+  animation: gitForegroundOut 0.4s ease-in-out forwards;
+}
+
+.git-container .confirmation-message {
+  animation: confirmationMessageIn 0.4s ease-in-out forwards;
+}
+
+.git-container .closing-load-bar.animate-out {
+  transform-origin: left;
+  animation: closingLoadBar 5s cubic-bezier(0.83, 0, 0.17, 1) forwards; 
 }
 
 .step-content .action-buttons > * {
@@ -312,6 +324,44 @@ section:first-child > .timeline-dot {
 
 .step-content .action-buttons > *.enabled-animation::before {
   animation: buttonIn 0.3s ease-in-out;
+}
+  
+@keyframes gitForegroundIn {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+@keyframes gitForegroundOut {
+  from {
+    clip-path: inset(0% 0 0 0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes closingLoadBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes confirmationMessageIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes buttonIn {

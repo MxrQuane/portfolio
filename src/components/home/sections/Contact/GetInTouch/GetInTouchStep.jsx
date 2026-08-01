@@ -1,6 +1,7 @@
-import { useEffect } from "react";
 import GetInTouchInput from "./GetInTouchInput"
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import emailjs from '@emailjs/browser';
+import { useState } from "react";
 
 const GetInTouchStep = ({
     currentStep,
@@ -12,11 +13,13 @@ const GetInTouchStep = ({
     form,
     setForm,
     stepRequiredFields,
+    onSubmit,
 }) => {
-    const stepKeys = ['whoAreYou', 'whatDoYouNeed', 'scopsAndLogistics'];
-    const isNextDisabled = stepRequiredFields.some(
+    const stepKeys = ['whoAreYou', 'whatDoYouNeed', 'scopsAndLogistics', 'anythingElse'];
+    const isNextDisabled = stepRequiredFields?.some(
         field => !form[stepKeys[currentStep]][field]
     );
+
     return (
         <div className="step-content">
             <div className="flex flex-col gap-4">
@@ -25,7 +28,10 @@ const GetInTouchStep = ({
                         Welcome! To make sure I understand what you're looking for and how I can help, let's start with a few quick questions.
                     </p>
                 }
-                <h3 className="text-2xl font-bold text-secondary-foreground" >{title}</h3>
+                <div>
+                    <h3 className="text-2xl font-bold text-primary-foreground" >{title}</h3>
+                    <h4 className="text-lg font-semibold text-secondary-muted" >{subtitle}</h4>
+                </div>
                 <div className="flex flex-col gap-4">
                     {inputs?.map((input, index) => (
                         <GetInTouchInput
@@ -64,6 +70,7 @@ const GetInTouchStep = ({
                         <button
                             className={`submit-button relative flex items-center ${isNextDisabled ? 'text-muted cursor-default pointer-events-none' : 'enabled-animation text-primary cursor-pointer'}`}
                             disabled={isNextDisabled}
+                            onClick={onSubmit}
                             type="submit"
                         >
                             Submit

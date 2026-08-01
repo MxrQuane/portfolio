@@ -3,9 +3,9 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 export const socials = [
     {
-        text: "marhin782@gmail.com",
+        text: "merouane.haine@gmail.com",
         type: "email",
-        link: "mailto:marhin782@gmail.com",
+        link: "mailto:merouane.haine@gmail.com",
         icon: faEnvelope
     },
     {
