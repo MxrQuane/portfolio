@@ -57,7 +57,7 @@ const Services = () => {
     return (
         <Section id="services">
             <SectionTitle title="services" subTitle="what I offer" textAlign="text-end" x="top-4 sm:top-6 lg:top-8 xl:top-16" y="right-4 sm:right-6 lg:right-8" />
-            <div className="flex flex-col gap-4 sm:gap-12 mt-16">
+            <div className="flex flex-col gap-12 mt-16">
                 {services.map((service, index) => (
                     <ServiceItem key={index} service={service} />
                 ))}

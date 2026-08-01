@@ -25,24 +25,24 @@ const ProjectPage = () => {
   };
 
   return (
-    <div className="flex bg-black">
-        <div className="display-container w-4/6 h-screen" >
+    <div className="flex flex-col-reverse md:flex-row bg-black">
+        <div className="display-container md:w-3/6 lg:w-4/6 h-screen" >
             {project.images && 
                 project.images.map((image, i) => (
                     <img key={i} src={image} alt="" />
                 ))
             }
         </div>
-        <div ref={infoContainerRef} className="info-container fixed bg-background right-0 w-2/6 h-screen p-10 z-1" >
+        <div ref={infoContainerRef} className="info-container md:fixed bg-background right-0 md:w-3/6 lg:w-2/6 h-screen p-10 z-1" >
             <button 
                 className="return-btn p-1 w-fit mb-8 bg-primary/90 rounded-full cursor-pointer text-white flex items-center justify-center"
                 onClick={handleBackClick}
             >
                 <Undo className="text-primary-foreground" size={18} />
             </button>
-            <h1 className="title capitalize text-5xl font-bold" >{project.title}</h1>
-            <h2 className="subtitle text-xl text-secondary-muted" >{project.subTitle}</h2>
-            <p className="text-2xl mt-8 text-justify leading-10" >{project.description}</p>
+            <h1 className="title capitalize md:text-4xl text-5xl font-bold" >{project.title}</h1>
+            <h2 className="subtitle mx:text-lg text-xl text-secondary-muted" >{project.subTitle}</h2>
+            <p className="text-2xl md:text-xl mt-8 text-justify lg:leading-10" >{project.description}</p>
             <div className="tags flex flex-wrap items-center gap-4 mt-12" >
                 {project.tags && project.tags.map((tag, i) => (
                     <SkillTag key={i} >{tag}</SkillTag>
@@ -56,7 +56,12 @@ const ProjectPage = () => {
                     Download
                 </PrimaryButton>
                 {project.githubRepo && (
-                    <a href={`https://github.com/${project.githubRepo}`} target="_blank" rel="noopener noreferrer" className="text-lg underline text-link">
+                    <a 
+                        href={`https://github.com/${project.githubRepo}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg underline text-link"
+                    >
                         Github Repo
                         <FontAwesomeIcon icon={faBook} fontSize={14} />
                     </a>

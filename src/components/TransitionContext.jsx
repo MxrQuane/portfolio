@@ -53,12 +53,12 @@ export const TransitionProvider = ({ children }) => {
     const coverOrigin = fromProject ? 'right' : 'left';
 
     const getTransform = () => {
-        if (transitionState === 'pre-covering') return 'scaleX(0.333333)'; // snap to sidebar width
+        if (transitionState === 'pre-covering') return 'scaleX(var(--info-in-scale))'; // snap to sidebar width
         if (transitionState === 'covering') return 'scaleX(1)';
         if (transitionState === 'uncovering') {
             // Going TO project: stop at sidebar width (0.333) from the right
             // Going FROM project: collapse fully to 0 from the left
-            return fromProject ? 'scaleX(0)' : 'scaleX(0.333333)';
+            return fromProject ? 'scaleX(0)' : 'scaleX(var(--info-out-scale))';
         }
         return 'scaleX(0)'; // idle
     };

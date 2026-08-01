@@ -11,6 +11,11 @@
   src: url("./assets/fonts/Mohave-VariableFont_wght.ttf") format("truetype");
 }
 
+:root {
+  --info-in-scale: 1;
+  --info-out-scale: 0;
+}
+
 @theme {
     --font-logo: "Quantico";
     --font-primary: "Mohave";
@@ -66,33 +71,6 @@ section:first-child > .timeline-dot {
   animation-delay: 2s;
   animation-fill-mode: forwards;
   transform: scale(0);
-}
-
-/*
-sm: 40rem
-md: 48rem
-lg: 64rem
-xl: 80rem 
- */
-@media (min-width: 40rem) {
-  :root {
-    --spacing-timeline: 8rem;
-    --spacing-timeline-gap: 10rem;
-  }
-}
-
-@media (min-width: 64rem) {
-  :root {
-    --spacing-timeline: 13rem;
-    --spacing-timeline-gap: 11rem;
-  }
-}
-
-@media (min-width: 80rem) {
-  :root {
-    --spacing-timeline: 17rem;
-    --spacing-timeline-gap: 11rem;
-  }
 }
 
 @keyframes navExpand {
@@ -280,5 +258,41 @@ xl: 80rem
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*
+sm: 40rem
+md: 48rem
+lg: 64rem
+xl: 80rem 
+ */
+@media (min-width: 40rem) {
+  :root {
+    --spacing-timeline: 8rem;
+    --spacing-timeline-gap: 10rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --info-in-scale: 0.5;
+    --info-out-scale: 0.5;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --spacing-timeline: 13rem;
+    --spacing-timeline-gap: 11rem;
+    --info-in-scale: 0.333333;
+    --info-out-scale: 0.333333;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --spacing-timeline: 17rem;
+    --spacing-timeline-gap: 11rem;
   }
 }
