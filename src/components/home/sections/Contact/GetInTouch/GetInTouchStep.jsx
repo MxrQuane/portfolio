@@ -1,7 +1,5 @@
 import GetInTouchInput from "./GetInTouchInput"
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import emailjs from '@emailjs/browser';
-import { useState } from "react";
 
 const GetInTouchStep = ({
     currentStep,
@@ -22,17 +20,17 @@ const GetInTouchStep = ({
 
     return (
         <div className="step-content">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2 md:gap-4">
                 {currentStep === 0 &&
-                    <p className="text-xl text-secondary-foreground" >
+                    <p className="text-lg md:text-xl text-secondary-foreground" >
                         Welcome! To make sure I understand what you're looking for and how I can help, let's start with a few quick questions.
                     </p>
                 }
                 <div>
-                    <h3 className="text-2xl font-bold text-primary-foreground" >{title}</h3>
-                    <h4 className="text-lg font-semibold text-secondary-muted" >{subtitle}</h4>
+                    <h3 className="text-xl md:text-2xl font-bold text-primary-foreground" >{title}</h3>
+                    <h4 className="text-sm md:text-lg font-semibold text-secondary-muted" >{subtitle}</h4>
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 md:gap-4">
                     {inputs?.map((input, index) => (
                         <GetInTouchInput
                             key={index} 

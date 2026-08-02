@@ -4,6 +4,9 @@ import { Undo } from "lucide-react";
 import { Steps } from 'antd';
 import { steps, stepInputs, stepRequiredFields, initialForm } from '../../../../../data/getInTouch';
 import GetInTouchStep from "./GetInTouchStep";
+import emailjs from '@emailjs/browser';
+import { socials } from "../../../../../data/socials";
+import GoBackButton from "../../../utils/GoBackButton";
 
 export const GetInTouch = () => {
     const [displayGIT, setDisplayGIT] = useState(false);
@@ -33,10 +36,12 @@ export const GetInTouch = () => {
             setForm(initialForm);
             setDisplayGIT(false);
             setSubmitted(false);
+            setIsError(false);
         },500)
     }
 
     const [submitted, setSubmitted] = useState(false);
+    const [isError, setIsError] = useState(false);
     
     const handleSubmit = async () => {
         // skip if website field is filled
@@ -66,7 +71,7 @@ export const GetInTouch = () => {
             }, 5000)
         } catch (error) {
             console.error('EmailJS error:', error);
-            // show an error state, maybe with a fallback "email me directly" link
+            setIsError(true);
         }
     }
     
@@ -75,8 +80,8 @@ export const GetInTouch = () => {
         <GetInTouchButton className="mt-10 md:mt-20" onClick={handleGetInTouch} />
         {displayGIT &&
             <div className="git-container" ref={gitRef} >
-                <div className="git-background fixed top-0 inset-x-0 h-[30%] bg-primary z-499" />
-                <div className="git-foreground fixed bottom-0 inset-x-0 h-[70%] bg-background p-12 flex flex-col z-500" >
+                <div className="git-background fixed top-0 inset-x-0 h-0 md:h-[30%] bg-primary z-499" />
+                <div className="git-foreground fixed bottom-0 inset-x-0 h-full md:h-[70%] bg-background p-6 md:p-8 lg:p-12 flex flex-col z-500" >
                     {submitted ? (
                         <>
                         <div className={`closing-load-bar ${submitted ? 'animate-out' : ''} absolute inset-x-0 top-0 h-2 bg-primary-500`} />
@@ -89,28 +94,42 @@ export const GetInTouch = () => {
                             </p>
                         </div>
                         </>
+                    ) : isError ? (
+                        <>
+                        <div className="error-message flex flex-col gap-2" >
+                            <GoBackButton onClick={handleClose} />
+                            <h3 className="text-3xl md:text-5xl font-bold text-red-700" >
+                                Something went wrong!
+                            </h3>
+                            <p className="text-2xl md:text-4xl font-semibold text-secondary-foreground" >
+                                Your message could not be sent. Please try sending a direct email to&nbsp;
+                                <span className="text-primary" >
+                                    <a target="_blank" href={`${socials[0].link}`} >
+                                        {socials[0].text}
+                                    </a>
+                                </span> instead.
+                            </p>
+                        </div>
+                        </>
                     ) : (
                     <>
-                    <button 
-                        className="go-back p-4 bg-muted rounded-full cursor-pointer self-end text-secondary-muted hover:bg-primary hover:text-primary-foreground"
-                        onClick={handleClose}
-                    >
-                        <Undo  size={20} />
-                    </button>
-                    <div className="flex gap-10" >
-                        <Steps
-                            orientation="vertical"
-                            styles={{
-                                item: {
-                                    paddingBottom: '32px'
-                                },
-                                itemIcon: {
-                                    color: 'var(--color-primary-foreground)'
-                                }
-                            }}
-                            current={current}
-                            items={steps}
-                        />
+                    <GoBackButton onClick={handleClose} />
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-10" >
+                        <div className="shrink-0" >
+                            <Steps
+                                orientation="vertical"
+                                styles={{
+                                    item: {
+                                        paddingBottom: '24px'
+                                    },
+                                    itemIcon: {
+                                        color: 'var(--color-primary-foreground)'
+                                    }
+                                }}
+                                current={current}
+                                items={steps}
+                            />
+                        </div>
 
                         <div className="steps-content-container">
                             <GetInTouchStep

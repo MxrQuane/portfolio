@@ -287,7 +287,8 @@ section:first-child > .timeline-dot {
   animation: gitForegroundOut 0.4s ease-in-out forwards;
 }
 
-.git-container .confirmation-message {
+.git-container .confirmation-message,
+.git-container .error-message {
   animation: confirmationMessageIn 0.4s ease-in-out forwards;
 }
 
