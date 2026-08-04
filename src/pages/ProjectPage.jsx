@@ -6,7 +6,8 @@ import PrimaryButton from "../components/home/utils/PrimaryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons"
 import { usePageTransition } from "../components/TransitionContext";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Loading from "../components/home/utils/Loading";
 
 const ProjectPage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const ProjectPage = () => {
   const { startTransition } = usePageTransition();
   const project = projects.find((project) => project.title.toLowerCase().replaceAll(" ", "-") === projectId);
   const infoContainerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleBackClick = () => {
     infoContainerRef.current.classList.add("animate-out");
@@ -24,14 +26,24 @@ const ProjectPage = () => {
     }, 400);
   };
 
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }, []);
+
   return (
     <div className="flex flex-col-reverse md:flex-row bg-black">
-        <div className="display-container md:w-3/6 lg:w-4/6 h-screen" >
-            {project.images && 
-                project.images.map((image, i) => (
-                    <img key={i} src={image} alt="" />
-                ))
-            }
+        <div className="relative display-container md:w-3/6 lg:w-4/6 h-screen" >
+            {isLoading && <Loading iconSize="28px" />}
+                {!isLoading && project.images && 
+                    <div className={`images-container transition-all duration-500`}>
+                        {project.images.map((image, i) => (
+                            <img key={i} src={image} alt="" />
+                        ))}
+                    </div>
+                }
         </div>
         <div ref={infoContainerRef} className="info-container md:fixed bg-background right-0 md:w-3/6 lg:w-2/6 h-screen p-10 z-1" >
             <button 

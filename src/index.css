@@ -230,6 +230,11 @@ section:first-child > .timeline-dot {
   animation: fadeOutText 0.4s ease both;
 }
 
+.images-container {
+  animation: fadeInText 0.4s ease both;
+  animation-delay: 0.4s;
+}
+
 @keyframes fadeOutText {
   from {
     opacity: 1;

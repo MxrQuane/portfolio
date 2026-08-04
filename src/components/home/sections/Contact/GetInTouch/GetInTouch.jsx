@@ -7,12 +7,14 @@ import GetInTouchStep from "./GetInTouchStep";
 import emailjs from '@emailjs/browser';
 import { socials } from "../../../../../data/socials";
 import GoBackButton from "../../../utils/GoBackButton";
+import Loading from "../../../utils/Loading";
 
 export const GetInTouch = () => {
     const [displayGIT, setDisplayGIT] = useState(false);
     const gitRef = useRef(null);
     const [current, setCurrent] = useState(0);
     const [form, setForm] = useState(initialForm);
+    const [isLoading, setIsLoading] = useState(false);
     steps.forEach((step, index) => {
         step.styles = {
             title: {
@@ -48,6 +50,7 @@ export const GetInTouch = () => {
         if (form?.whoAreYou?.website) return;
 
         try {
+            setIsLoading(true)
             await emailjs.send(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -64,6 +67,7 @@ export const GetInTouch = () => {
                 import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
+            setIsLoading(false);
             // success — show confirmation UI
             setSubmitted(true);
             setTimeout(() => {
@@ -71,6 +75,7 @@ export const GetInTouch = () => {
             }, 5000)
         } catch (error) {
             console.error('EmailJS error:', error);
+            setIsLoading(false);
             setIsError(true);
         }
     }
@@ -82,6 +87,16 @@ export const GetInTouch = () => {
             <div className="git-container" ref={gitRef} >
                 <div className="git-background fixed top-0 inset-x-0 h-0 md:h-[30%] bg-primary z-499" />
                 <div className="git-foreground fixed bottom-0 inset-x-0 h-full md:h-[70%] bg-background p-6 md:p-8 lg:p-12 flex flex-col z-500" >
+                    {/* loader when submitting */}
+                    {isLoading && (
+                        <>
+                        <div className="loader-container absolute inset-0 w-full h-full bg-black/50 z-500">
+                            <div className="absolute inset-0 flex items-center justify-center z-501" >
+                                <Loading iconSize="32px" />
+                            </div>
+                        </div>
+                        </>
+                    )}
                     {submitted ? (
                         <>
                         <div className={`closing-load-bar ${submitted ? 'animate-out' : ''} absolute inset-x-0 top-0 h-2 bg-primary-500`} />
@@ -131,7 +146,7 @@ export const GetInTouch = () => {
                             />
                         </div>
 
-                        <div className="steps-content-container">
+                        <div className="steps-content-container w-full">
                             <GetInTouchStep
                                 currentStep={current} 
                                 setCurrentStep={setCurrent} 
